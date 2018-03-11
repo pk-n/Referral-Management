@@ -9,4 +9,10 @@ class User < ApplicationRecord
 
   has_one :user_role
   has_one :role, through: :user_role
+
+  # returns Boolean
+  #
+  def is_admin?
+    !!(role.try(:name) == "Admin")
+  end
 end

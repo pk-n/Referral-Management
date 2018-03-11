@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180311111050) do
+ActiveRecord::Schema.define(version: 20180311144103) do
+
+  create_table "referral_codes", force: :cascade do |t|
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["code"], name: "index_referral_codes_on_code", unique: true
+    t.index ["user_id"], name: "index_referral_codes_on_user_id"
+  end
+
+  create_table "referrals", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.integer "phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "referral_code_id"
+    t.index ["referral_code_id"], name: "index_referrals_on_referral_code_id"
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string "name", null: false

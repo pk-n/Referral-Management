@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
-  def show
+  def home
+    if false #current_user is a admin
+      redirect_to admin_user_path(current_user)
+    else
+      redirect_to user_path(current_user)
+    end
   end
   
-  def home
-    redirect_to current_user
+  def show
   end
 end

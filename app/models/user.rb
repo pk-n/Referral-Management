@@ -6,4 +6,7 @@ class User < ApplicationRecord
          
   validates :email, :first_name, :last_name, presence: true
   validates :email, uniqueness: true
+
+  has_one :user_role
+  has_one :role, through: :user_role
 end

@@ -1,0 +1,54 @@
+<h2>Create a new User</h2>
+
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@user.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+<%= form_with scope: :user, url: admin_users_path do |form| %>
+  <p>
+    <%= form.label :first_name %><br>
+    <%= form.text_field :first_name, autofocus: true, required: true %>
+  </p>
+  
+  <p>
+    <%= form.label :last_name %><br>
+    <%= form.text_field :last_name, required: true %>
+  </p>
+  
+  <p>
+    <%= form.label :email %><br>
+    <%= form.email_field :email, required: true %>
+  </p>
+  
+  <p>
+    <%= form.label :phone_number %><br>
+    <%= form.text_field :phone_number %>
+  </p>
+  
+  <p>
+    <%= form.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= form.password_field :password, autocomplete: "off", required: true %>
+  </p>
+
+  <p>
+    <%= form.label :password_confirmation %><br />
+    <%= form.password_field :password_confirmation, autocomplete: "off", required: true %>
+  </p>
+  
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

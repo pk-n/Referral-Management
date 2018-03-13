@@ -1,2 +1,28 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>Referrals</h1>
+<% @referral_codes.each do |referral_code| %>
+<div>
+  <h3>Referral code - <%= referral_code.code %></h3>
+	<table class="table">
+	  <thead class="thead-light">
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">First Name</th>
+	      <th scope="col">Last Name</th>
+		  <th scope="col">Email</th>
+		  <th scope="col">Phone Number</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		  <% referral_code.referrals.each_with_index do |referral, index| %>
+		    <tr>
+		      <th scope="row"><%= index+1 %></th>
+		      <td><%= referral.first_name %></td>
+		      <td><%= referral.last_name %></td>
+		      <td><%= referral.email %></td>
+			  <td><%= referral.phone_number %></td>
+		    </tr>
+		  <% end %>
+	  </tbody>
+	</table>
+  </div>
+<% end %>

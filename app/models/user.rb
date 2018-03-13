@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   has_one :user_role
   has_one :role, through: :user_role
+  has_many :referral_codes
+  has_many :referrals, through: :referral_codes
 
   # returns Boolean
   #

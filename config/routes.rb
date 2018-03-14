@@ -7,5 +7,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:show, :index, :new, :create]
+    resources :referral_codes, only: [:new, :create]
   end
 end

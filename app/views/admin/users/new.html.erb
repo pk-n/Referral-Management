@@ -1,18 +1,6 @@
 <h2>Create a new User</h2>
 
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@user.errors.count, "error") %> prohibited
-        this article from being saved:
-      </h2>
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= render partial: "admin/shared/errors", locals: { resource: @user } %>
   
 <%= form_with scope: :user, url: admin_users_path do |form| %>
   <p>

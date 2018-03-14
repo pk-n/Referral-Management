@@ -1,0 +1,15 @@
+<h2>Add a new Referral Code</h2>
+<%= render partial: "admin/shared/errors", locals: { resource: @referral_code } %>
+<%= form_with scope: :referral_code, url: admin_referral_codes_path do |form| %>
+  <p>
+    <%= form.label :code %><br>
+    <%= form.text_field :code, autofocus: true, required: true %>
+  </p>
+  <p>
+  	<%= form.label :user %><br>
+	<%= form.select :user_id, options_from_collection_for_select(User.all, :id, :email) %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

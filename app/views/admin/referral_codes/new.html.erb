@@ -1,15 +1,33 @@
-<h2>Add a new Referral Code</h2>
-<%= render partial: "admin/shared/errors", locals: { resource: @referral_code } %>
-<%= form_with scope: :referral_code, url: admin_referral_codes_path do |form| %>
-  <p>
-    <%= form.label :code %><br>
-    <%= form.text_field :code, autofocus: true, required: true %>
-  </p>
-  <p>
-  	<%= form.label :user %><br>
-	<%= form.select :user_id, options_from_collection_for_select(User.all, :id, :email) %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<div class='container'>
+	<h4>Add a new Referral Code</h4>
+	<%= render partial: "admin/shared/errors", locals: { resource: @referral_code } %>
+
+	<%= form_with scope: :referral_code, url: admin_referral_codes_path do |form| %>
+		<div class='row'>
+			<div class='col s4'>
+				<p>
+					<%= form.label :code %><br>
+					<%= form.text_field :code, autofocus: true, required: true %>
+				</p>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col s4'>
+				<p>
+					<%= form.label :user %><br>
+					<%= form.select :user_id, options_from_collection_for_select(User.all, :id, :email) %>
+				</p>
+			</div>
+		</div>
+	    <div>
+		  <p>
+		    <%= form.submit "Save", class: 'btn waves-effect waves-light' %>
+		  </p>
+	    </div>
+	<% end %>
+</div>
+<script>
+    $(document).ready(function() {
+      $('select').material_select();
+    });
+</script>

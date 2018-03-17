@@ -1,31 +1,49 @@
-<h2>Add a new Referral </h2>
-<%= render partial: "admin/shared/errors", locals: { resource: @referral } %>
-<%= form_with scope: :referral, url: admin_referrals_path do |form| %>
-  <p>
-    <%= form.label :first_name %><br>
-    <%= form.text_field :first_name, autofocus: true, required: true %>
-  </p>
-  
-  <p>
-    <%= form.label :last_name %><br>
-    <%= form.text_field :last_name, required: true %>
-  </p>
-  
-  <p>
-    <%= form.label :email %><br>
-    <%= form.email_field :email, required: true %>
-  </p>
-  
-  <p>
-    <%= form.label :phone_number %><br>
-    <%= form.text_field :phone_number %>
-  </p>
+<div class='container'>
+	<h4>Add a new Referral</h4>
+	<%= render partial: "admin/shared/errors", locals: { resource: @referral } %>
+	<div class='row'>
+		<%= form_with scope: :referral, url: admin_referrals_path do |form| %>
+		<div class='col s6'>
+			<p>
+				<%= form.label :first_name %><br>
+				<%= form.text_field :first_name, autofocus: true, required: true %>
+			</p>
+		</div>
+		<div class='col s6'>
+			<p>
+				<%= form.label :last_name %><br>
+				<%= form.text_field :last_name, required: true %>
+			</p>
+		</div>
+		<div class='col s6'>
+			<p>
+				<%= form.label :email %><br>
+				<%= form.email_field :email, required: true %>
+			</p>
+		</div>
+		<div class='col s6'>
+			<p>
+				<%= form.label :phone_number %><br>
+				<%= form.text_field :phone_number %>
+			</p>
+		</div>
+		<div class='input-field col s3'>
+			<p>
+				<%= form.label :referral_code %><br>
+				<%= form.select :referral_code, options_from_collection_for_select(ReferralCode.all, :id, :code) %>
+			</p>
+		</div>
+		<div class='col s12'>
+		  <p>
+		    <%= form.submit "Save", class: 'btn waves-effect waves-light' %>
+		  </p>
+	  </div>
+		<% end %>
+	</div>
+</div>
 
-  <p>
-  	<%= form.label :referral_code %><br>
-	<%= form.select :referral_code, options_from_collection_for_select(ReferralCode.all, :id, :code) %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<script>
+    $(document).ready(function() {
+      $('select').material_select();
+    });
+</script>

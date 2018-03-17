@@ -1,42 +1,54 @@
-<h2>Create a new User</h2>
+<div class='container'>
+	<h4>Create a new User</h4>
 
-<%= render partial: "admin/shared/errors", locals: { resource: @user } %>
+	<%= render partial: "admin/shared/errors", locals: { resource: @user } %>
   
-<%= form_with scope: :user, url: admin_users_path do |form| %>
-  <p>
-    <%= form.label :first_name %><br>
-    <%= form.text_field :first_name, autofocus: true, required: true %>
-  </p>
-  
-  <p>
-    <%= form.label :last_name %><br>
-    <%= form.text_field :last_name, required: true %>
-  </p>
-  
-  <p>
-    <%= form.label :email %><br>
-    <%= form.email_field :email, required: true %>
-  </p>
-  
-  <p>
-    <%= form.label :phone_number %><br>
-    <%= form.text_field :phone_number %>
-  </p>
-  
-  <p>
-    <%= form.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= form.password_field :password, autocomplete: "off", required: true %>
-  </p>
-
-  <p>
-    <%= form.label :password_confirmation %><br />
-    <%= form.password_field :password_confirmation, autocomplete: "off", required: true %>
-  </p>
-  
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+	<%= form_with scope: :user, url: admin_users_path do |form| %>
+	  <div class='row'>
+		  <div class='col s6'>
+			  <p>
+			    <%= form.label :first_name %><br>
+			    <%= form.text_field :first_name, autofocus: true, required: true %>
+			  </p>
+		  </div>
+		  <div class='col s6'>
+			  <p>
+				<%= form.label :last_name %><br>
+				<%= form.text_field :last_name, required: true %>
+			</p>
+		  </div>
+		  <div class='col s6'>
+			  <p>
+			    <%= form.label :email %><br>
+			    <%= form.email_field :email, required: true %>
+			  </p>
+		  </div>
+		  <div class='col s6'>
+			  <p>
+			    <%= form.label :phone_number %><br>
+			    <%= form.text_field :phone_number %>
+			  </p>
+		  </div>
+		  <div class='col s12'>
+			  <p>
+			    <%= form.label :password %>
+			    <% if @minimum_password_length %>
+			    <em>(<%= @minimum_password_length %> characters minimum)</em>
+			    <% end %><br />
+			    <%= form.password_field :password, autocomplete: "off", required: true %>
+			  </p>
+		  </div>
+		  <div class='col s12'>
+			  <p>
+			    <%= form.label :password_confirmation %><br />
+			    <%= form.password_field :password_confirmation, autocomplete: "off", required: true %>
+			  </p>
+		  </div>
+		  <div>
+			  <p>
+			    <%= form.submit "Save", class: 'btn waves-effect waves-light' %>
+			  </p>
+		  </div>
+	  </div>
+	<% end %>
+</div>
